@@ -1,0 +1,6 @@
+/* Import styles from public folder via index.html instead */
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+}
