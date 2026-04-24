@@ -1,0 +1,12 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "Jonathan Ho's Resume",
+	"compatibility_date": "2026-04-13",
+	"pages_build_output_dir": "resume-react/build",
+	"observability": {
+		"enabled": true
+	},
+	"compatibility_flags": [
+		"nodejs_compat"
+	]
+}
