@@ -9,9 +9,9 @@ interface ContactItem {
 }
 
 const contactItems: ContactItem[] = [
-  { icon: '📧', label: 'Email',    value: 'uschohk@hotmail.com',       href: 'mailto:uschohk@hotmail.com' },
-  { icon: '📱', label: 'Phone',    value: '(425) 301-5348',             href: 'tel:+14253015348' },
-  { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/siuho',      href: 'https://linkedin.com/in/siuho' },
+  { icon: '📧', label: 'Email',    value: 'uschohk@hotmail.com',  href: 'mailto:uschohk@hotmail.com' },
+  { icon: '📱', label: 'Phone',    value: '(425) 301-5348',        href: 'tel:+14253015348' },
+  { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/siuho', href: 'https://linkedin.com/in/siuho' },
   { icon: '📍', label: 'Location', value: 'Seattle, WA 98122' },
 ];
 
@@ -22,15 +22,17 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="section contact-section">
       <div className="container">
-        <h2
-          ref={titleRef as React.RefObject<HTMLHeadingElement>}
-          className={`section-title text-center reveal ${titleVisible ? 'active' : ''}`}
+        <div
+          ref={titleRef as React.RefObject<HTMLDivElement>}
+          className={`reveal ${titleVisible ? 'active' : ''}`}
         >
-          Get in Touch
-        </h2>
-        <p className={`section-subtitle text-center reveal ${titleVisible ? 'active' : ''}`}>
-          Open to new opportunities
-        </p>
+          <span className="section-label">Reach Out</span>
+          <h2 className="section-title">Get in Touch</h2>
+          <p className="section-subtitle">
+            Open to new opportunities and conversations
+          </p>
+        </div>
+
         <div
           ref={cardRef as React.RefObject<HTMLDivElement>}
           className={`contact-card reveal ${cardVisible ? 'active' : ''}`}
@@ -38,7 +40,9 @@ const Contact: React.FC = () => {
           <div className="contact-items">
             {contactItems.map((item) => (
               <div key={item.label} className="contact-item">
-                <span className="contact-icon">{item.icon}</span>
+                <div className="contact-icon-wrap">
+                  <span className="contact-icon" aria-hidden="true">{item.icon}</span>
+                </div>
                 <div className="contact-info">
                   <span className="contact-label">{item.label}</span>
                   {item.href ? (
@@ -58,7 +62,7 @@ const Contact: React.FC = () => {
             ))}
           </div>
           <div className="contact-footer">
-            <p>Fluent in English, Cantonese, and Mandarin</p>
+            <p>Fluent in English · Cantonese · Mandarin</p>
           </div>
         </div>
       </div>

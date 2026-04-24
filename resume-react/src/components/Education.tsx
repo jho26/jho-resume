@@ -59,15 +59,16 @@ const Education: React.FC = () => {
   return (
     <section id="education" className="section education-section">
       <div className="container">
-        <h2
-          ref={titleRef as React.RefObject<HTMLHeadingElement>}
-          className={`section-title text-center reveal ${titleVisible ? 'active' : ''}`}
+        <div
+          ref={titleRef as React.RefObject<HTMLDivElement>}
+          className={`reveal ${titleVisible ? 'active' : ''}`}
         >
-          Education
-        </h2>
-        <p className={`section-subtitle text-center reveal ${titleVisible ? 'active' : ''}`}>
-          Academic foundation
-        </p>
+          <span className="section-label">Academic</span>
+          <h2 className="section-title">Education</h2>
+          <p className="section-subtitle">
+            Academic foundation in mathematics and computer science
+          </p>
+        </div>
         <div className="education-grid">
           {entries.map((entry, i) => (
             <EducationCard key={entry.degree} entry={entry} delay={`${i * 0.1}s`} />

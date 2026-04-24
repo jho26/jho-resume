@@ -50,7 +50,7 @@ const SkillGroupCard: React.FC<{ group: SkillGroup; delay: string }> = ({ group,
       style={{ transitionDelay: delay }}
     >
       <h3 className="skill-group-title">
-        <span className="skill-group-emoji">{group.emoji}</span>
+        <span className="skill-group-emoji" aria-hidden="true">{group.emoji}</span>
         {group.label}
       </h3>
       <div className="skill-tags">
@@ -68,15 +68,16 @@ const Skills: React.FC = () => {
   return (
     <section id="skills" className="section skills-section">
       <div className="container">
-        <h2
-          ref={titleRef as React.RefObject<HTMLHeadingElement>}
-          className={`section-title text-center reveal ${titleVisible ? 'active' : ''}`}
+        <div
+          ref={titleRef as React.RefObject<HTMLDivElement>}
+          className={`reveal ${titleVisible ? 'active' : ''}`}
         >
-          Skills
-        </h2>
-        <p className={`section-subtitle text-center reveal ${titleVisible ? 'active' : ''}`}>
-          Tools and technologies I work with
-        </p>
+          <span className="section-label">Tech Stack</span>
+          <h2 className="section-title">Skills</h2>
+          <p className="section-subtitle">
+            Tools and technologies I work with
+          </p>
+        </div>
         <div className="skills-grid">
           {skillGroups.map((group, i) => (
             <SkillGroupCard key={group.label} group={group} delay={`${i * 0.08}s`} />

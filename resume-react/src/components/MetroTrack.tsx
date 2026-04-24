@@ -4,21 +4,20 @@ interface MetroStop {
   id: string;
   name: string;
   subtitle: string;
-  icon?: string;
   className?: string;
 }
 
 const metroStops: MetroStop[] = [
-  { id: 'hero',       name: 'Jonathan', subtitle: 'Home',       icon: '👋', className: 'page-metro-stop-start' },
+  { id: 'hero',       name: 'Jonathan',   subtitle: 'Home',       className: 'page-metro-stop-start' },
   { id: 'experience', name: 'Experience', subtitle: 'Career' },
   { id: 'skills',     name: 'Skills',     subtitle: 'Tech Stack' },
   { id: 'education',  name: 'Education',  subtitle: 'Academic' },
-  { id: 'contact',    name: 'Contact',    subtitle: 'Reach Out', icon: '📬', className: 'page-metro-stop-end destination' },
+  { id: 'claude',     name: 'Claude',     subtitle: 'AI Work' },
+  { id: 'contact',    name: 'Contact',    subtitle: 'Reach Out',  className: 'page-metro-stop-end destination' },
 ];
 
 const MetroTrack: React.FC = () => {
   const [activeSection, setActiveSection] = useState('hero');
-  const trainIndicatorRef = useRef<HTMLDivElement>(null);
   const stopsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -62,27 +61,7 @@ const MetroTrack: React.FC = () => {
     updateActiveSection();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]);
-
-  useEffect(() => {
-    if (!trainIndicatorRef.current || !stopsContainerRef.current) return;
-
-    const activeIndex = metroStops.findIndex(stop => stop.id === activeSection);
-    if (activeIndex === -1) return;
-
-    const stopElements = stopsContainerRef.current.querySelectorAll('.page-metro-stop');
-    const activeStop = stopElements[activeIndex] as HTMLElement;
-    if (!activeStop) return;
-
-    const containerRect = stopsContainerRef.current.getBoundingClientRect();
-    const stopRect = activeStop.getBoundingClientRect();
-    const relativeTop = stopRect.top - containerRect.top;
-    const trainHeight = 60;
-    const stopHeight = stopRect.height;
-    const centeredTop = relativeTop + (stopHeight / 2) - (trainHeight / 2);
-
-    trainIndicatorRef.current.style.top = `${centeredTop}px`;
-  }, [activeSection]);
+  }, []);
 
   const handleStopClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
@@ -93,9 +72,8 @@ const MetroTrack: React.FC = () => {
   };
 
   return (
-    <nav className="page-metro-track" id="metroTrack">
-      <div className="page-track-line"></div>
-      <div className="page-train-indicator" ref={trainIndicatorRef}></div>
+    <nav className="page-metro-track" id="metroTrack" aria-label="Page sections">
+      <div className="page-track-line" aria-hidden="true"></div>
       <div className="page-metro-stops" ref={stopsContainerRef}>
         {metroStops.map((stop) => (
           <a
@@ -104,8 +82,9 @@ const MetroTrack: React.FC = () => {
             className={`page-metro-stop ${stop.className || ''} ${activeSection === stop.id ? 'active' : ''}`}
             data-section={stop.id}
             onClick={(e) => handleStopClick(e, stop.id)}
+            aria-label={`Navigate to ${stop.name}`}
           >
-            <div className="page-stop-node">{stop.icon || ''}</div>
+            <div className="page-stop-node" aria-hidden="true"></div>
             <div className="page-stop-label">
               <span className="page-stop-name">{stop.name}</span>
               <span className="page-stop-subtitle">{stop.subtitle}</span>

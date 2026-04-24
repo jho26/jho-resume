@@ -5,7 +5,6 @@ interface Job {
   role: string;
   company: string;
   dates: string;
-  accentColor: string;
   bullets: string[];
 }
 
@@ -14,7 +13,6 @@ const jobs: Job[] = [
     role: 'Senior Software Engineer',
     company: 'Tableau Software at Salesforce',
     dates: 'April 2021 – Present',
-    accentColor: '#00A1E0',
     bullets: [
       'Distributed Systems & Cloud Architecture: Architected and optimized event-driven microservices and high-throughput data pipelines on AWS. Led critical production operations including deploying global secondary index (GSI) changes and managing asynchronous queues (SQS), ensuring highly available and fault-tolerant system integrations.',
       'API Performance & Scale: Diagnosed and resolved complex integration bottlenecks in production. Dramatically reduced API latency by implementing JWT token caching, optimizing backend database access times (e.g., reducing RESTORE audit queries to ~520ms), and streamlining DynamoDB duplicate check validations.',
@@ -27,7 +25,6 @@ const jobs: Job[] = [
     role: 'Software Engineer',
     company: 'Microsoft via Insight Global',
     dates: 'August 2019 – April 2021',
-    accentColor: '#1A365D',
     bullets: [
       'Designed and developed enterprise-level test infrastructure, integrating it into code to support the Microsoft Office team.',
       'Utilized Ruby and the Chef platform to design systems for automating provisioning of macOS machines, benefiting multiple Microsoft Office for Mac teams.',
@@ -40,7 +37,6 @@ const jobs: Job[] = [
     role: 'Senior Technical Support Engineer',
     company: 'Tableau Software',
     dates: 'January 2015 – August 2019',
-    accentColor: '#FF6B35',
     bullets: [
       'Independently diagnosed and resolved complex application issues, including user experience latency, in customer environments at scale.',
       'Improved team case closing metrics by proactively identifying and documenting previously undocumented issues through internal knowledge base (KB) articles.',
@@ -58,11 +54,11 @@ const ExperienceCard: React.FC<{ job: Job; delay: string }> = ({ job, delay }) =
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
       className={`experience-card reveal ${isVisible ? 'active' : ''}`}
-      style={{ animationDelay: delay, borderLeftColor: job.accentColor }}
+      style={{ transitionDelay: delay }}
     >
       <div className="experience-card-header">
         <div className="experience-role">{job.role}</div>
-        <div className="experience-company" style={{ color: job.accentColor }}>{job.company}</div>
+        <div className="experience-company">{job.company}</div>
         <div className="experience-dates">{job.dates}</div>
       </div>
       <ul className="experience-bullets">
@@ -80,15 +76,16 @@ const Experience: React.FC = () => {
   return (
     <section id="experience" className="section experience-section">
       <div className="container">
-        <h2
-          ref={titleRef as React.RefObject<HTMLHeadingElement>}
-          className={`section-title text-center reveal ${titleVisible ? 'active' : ''}`}
+        <div
+          ref={titleRef as React.RefObject<HTMLDivElement>}
+          className={`reveal ${titleVisible ? 'active' : ''}`}
         >
-          Experience
-        </h2>
-        <p className={`section-subtitle text-center reveal ${titleVisible ? 'active' : ''}`}>
-          Building reliable systems at scale
-        </p>
+          <span className="section-label">Career</span>
+          <h2 className="section-title">Experience</h2>
+          <p className="section-subtitle">
+            Building reliable systems at scale
+          </p>
+        </div>
         <div className="experience-grid">
           {jobs.map((job, i) => (
             <ExperienceCard key={job.company} job={job} delay={`${i * 0.1}s`} />

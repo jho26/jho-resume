@@ -11,22 +11,32 @@ const Hero: React.FC = () => {
 
   return (
     <section id="hero" className="hero resume-hero">
-      <div className="hero-background resume-hero-background"></div>
+      <div className="resume-hero-background" aria-hidden="true"></div>
+      <div className="hero-blueprint-lines" aria-hidden="true"></div>
+      <div className="hero-ring" aria-hidden="true"></div>
+      <div className="hero-ring-inner" aria-hidden="true"></div>
+
       <div className="hero-content">
-        <p className="hero-eyebrow fade-in">Senior Software Engineer</p>
-        <h1 className="hero-title fade-in">Siu (Jonathan) Ho</h1>
-        <p className="hero-subtitle fade-in-delay">
+        <p className="hero-eyebrow">
+          Senior Software Engineer
+        </p>
+
+        <h1 className="hero-title">
+          Jonathan<br />
+          <span className="hero-title-accent">Ho</span>
+        </h1>
+
+        <p className="hero-subtitle">
           Distributed Systems · Cloud Architecture · Production Reliability
         </p>
-        <p className="hero-location fade-in-delay-2">
+
+        <p className="hero-location">
           Tableau / Salesforce &nbsp;·&nbsp; Seattle, WA
         </p>
-        <div className="hero-buttons fade-in-delay-3">
-          <a
-            href="mailto:uschohk@hotmail.com"
-            className="cta-button"
-          >
-            Email Me
+
+        <div className="hero-buttons">
+          <a href="mailto:uschohk@hotmail.com" className="cta-button">
+            Get in Touch
           </a>
           <a
             href="https://linkedin.com/in/siuho"
@@ -37,10 +47,26 @@ const Hero: React.FC = () => {
             LinkedIn →
           </a>
         </div>
+
+        <div className="hero-stats">
+          <div className="hero-stat">
+            <span className="hero-stat-number">10+</span>
+            <span className="hero-stat-label">Years Exp.</span>
+          </div>
+          <div className="hero-stat">
+            <span className="hero-stat-number">99.95%</span>
+            <span className="hero-stat-label">Availability</span>
+          </div>
+          <div className="hero-stat">
+            <span className="hero-stat-number">T1</span>
+            <span className="hero-stat-label">Tier Services</span>
+          </div>
+        </div>
       </div>
+
       {!scrolled && (
-        <div className="scroll-indicator">
-          <span></span>
+        <div className="scroll-indicator" aria-hidden="true">
+          <span>Scroll</span>
         </div>
       )}
     </section>
