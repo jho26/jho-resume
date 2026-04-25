@@ -469,6 +469,42 @@ p {
 }
 
 /* ==========================================
+   Seattle Skyline
+   ========================================== */
+
+.seattle-skyline {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    height: 220px;
+    pointer-events: none;
+    z-index: 1;
+    fill: none;
+    stroke: var(--blue);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0;
+    animation: skylineReveal 2s var(--ease-out-expo) 0.4s forwards,
+               skylineDraw 3s ease-out 0.4s forwards;
+    stroke-dasharray: 4000;
+    stroke-dashoffset: 4000;
+}
+
+@keyframes skylineDraw {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes skylineReveal {
+    0%   { opacity: 0; }
+    10%  { opacity: 0.18; }
+    100% { opacity: 0.18; }
+}
+
+/* ==========================================
    Hero Keyframes
    ========================================== */
 
