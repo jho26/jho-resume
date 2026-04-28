@@ -161,27 +161,8 @@ const Hero: React.FC = () => {
           </a>
         </div>
 
-        <div className="hero-stats">
-          <div className="hero-stat">
-            <span className="hero-stat-number">10+</span>
-            <span className="hero-stat-label">Years Exp.</span>
-          </div>
-          <div className="hero-stat">
-            <span className="hero-stat-number">99.95%</span>
-            <span className="hero-stat-label">Availability</span>
-          </div>
-          <div className="hero-stat">
-            <span className="hero-stat-number">T1</span>
-            <span className="hero-stat-label">Tier Services</span>
-          </div>
-        </div>
       </div>
 
-      {!scrolled && (
-        <div className="scroll-indicator" aria-hidden="true">
-          <span>Scroll</span>
-        </div>
-      )}
     </section>
   );
 };
