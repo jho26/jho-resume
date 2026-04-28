@@ -12,7 +12,6 @@ const metroStops: MetroStop[] = [
   { id: 'experience', name: 'Experience', subtitle: 'Career' },
   { id: 'skills',     name: 'Skills',     subtitle: 'Tech Stack' },
   { id: 'education',  name: 'Education',  subtitle: 'Academic' },
-  { id: 'claude',     name: 'Claude',     subtitle: 'AI Work' },
   { id: 'contact',    name: 'Contact',    subtitle: 'Reach Out',  className: 'page-metro-stop-end destination' },
 ];
 

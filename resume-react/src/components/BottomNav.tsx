@@ -49,11 +49,10 @@ const tabs: BottomNavTab[] = [
   { id: 'experience', label: 'Work',    icon: <IconBriefcase />, sectionId: 'experience', sectionIds: ['experience'] },
   { id: 'skills',     label: 'Skills',  icon: <IconCode />,      sectionId: 'skills',     sectionIds: ['skills'] },
   { id: 'education',  label: 'Edu',     icon: <IconGradCap />,   sectionId: 'education',  sectionIds: ['education'] },
-  { id: 'claude',     label: 'Claude',  icon: <IconAI />,        sectionId: 'claude',     sectionIds: ['claude'] },
   { id: 'contact',    label: 'Contact', icon: <IconMail />,      sectionId: 'contact',    sectionIds: ['contact'] },
 ];
 
-const allSectionIds = ['hero', 'experience', 'skills', 'education', 'claude', 'contact'];
+const allSectionIds = ['hero', 'experience', 'skills', 'education', 'contact'];
 
 const BottomNav: React.FC = () => {
   const [activeSection, setActiveSection] = useState('hero');
@@ -124,7 +123,7 @@ const BottomNav: React.FC = () => {
                 className="bottom-nav-icon"
                 aria-hidden="true"
                 style={{
-                  color: isActive ? '#1a6bff' : undefined,
+                  color: isActive ? '#9B7FF7' : undefined,
                   transition: 'color 0.2s ease',
                 }}
               >

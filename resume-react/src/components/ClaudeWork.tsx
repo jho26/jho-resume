@@ -13,7 +13,7 @@ interface ClaudeProject {
 const projects: ClaudeProject[] = [
   {
     icon: '🤖',
-    tag: 'AI Agent · Claude API',
+    tag: 'AI Agent · Claude Code',
     title: 'This Resume Site',
     description:
       'Architected and built this portfolio from the ground up using Claude as a coding co-pilot — component design, blueprint animations, responsive layout, and Cloudflare Workers deployment, all iterated with Claude Code.',
@@ -24,21 +24,21 @@ const projects: ClaudeProject[] = [
     tag: 'Automation · Anthropic SDK',
     title: 'Engineering Runbook Generator',
     description:
-      'Leveraged the Claude API to automatically generate structured operational runbooks from raw incident post-mortems, cutting mean-time-to-resolve for on-call engineers by summarizing root causes and remediation steps.',
+      'Used the Claude API to auto-generate structured operational runbooks from Sev-3 RCA write-ups and incident post-mortems at Tableau/Salesforce — distilling root causes, remediation steps, and rollback procedures into searchable playbooks for on-call engineers.',
   },
   {
     icon: '🔍',
     tag: 'Observability · AI-Assisted',
     title: 'Log Anomaly Triage',
     description:
-      'Prototyped a Claude-powered triage assistant that ingests CloudWatch log streams and Grafana alert payloads, then surfaces the most likely root cause with relevant playbook sections — reducing war-room cognitive load.',
+      'Prototyped a Claude-powered triage assistant that ingests CloudWatch and Argus alert payloads, then surfaces the most likely root cause with relevant playbook sections. Directly informed by real war-room work — including catching a critical silent data loss bug in batched messaging deployments.',
   },
   {
-    icon: '📐',
-    tag: 'Design System · Claude Code',
-    title: 'Blueprint Design Language',
+    icon: '🗄️',
+    tag: 'Performance · Claude API',
+    title: 'DynamoDB Query Optimizer',
     description:
-      'Collaborated with Claude to define a complete design system rooted in engineering aesthetics — blueprint grids, JetBrains Mono annotations, electric-blue accents — producing cohesive, production-ready CSS variables and components.',
+      'Collaborated with Claude to diagnose and resolve production DynamoDB bottlenecks — streamlining duplicate-check validations, tuning GSI deployments, and reducing RESTORE audit query latency to ~520ms — as part of API performance work at Tableau/Salesforce.',
   },
 ];
 
@@ -111,7 +111,7 @@ const ClaudeWork: React.FC = () => {
           <div className="claude-banner-text">
             <h3>Claude as Engineering Partner</h3>
             <p>
-              I use Claude extensively — for design iteration, code review, drafting architectural decisions, operational runbooks, and debugging complex distributed-systems issues. It's become a core part of my engineering workflow.
+              I use Claude extensively — drafting architectural decisions and design docs, generating operational runbooks from incident post-mortems, accelerating root cause analysis on distributed-systems issues, and iterating on cloud migration strategies. It's become a core part of my engineering workflow at Tableau/Salesforce.
             </p>
           </div>
         </div>

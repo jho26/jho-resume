@@ -10,7 +10,6 @@ import './App.css';
 const Experience = lazy(() => import('./components/Experience'));
 const Skills = lazy(() => import('./components/Skills'));
 const Education = lazy(() => import('./components/Education'));
-const ClaudeWork = lazy(() => import('./components/ClaudeWork'));
 const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
@@ -29,8 +28,6 @@ function App() {
           <Skills />
           <div className="section-divider" aria-hidden="true" />
           <Education />
-          <div className="section-divider" aria-hidden="true" />
-          <ClaudeWork />
           <div className="section-divider" aria-hidden="true" />
           <Contact />
         </Suspense>
