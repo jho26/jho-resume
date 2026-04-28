@@ -14,9 +14,9 @@ const jobs: Job[] = [
     company: 'Tableau Software at Salesforce',
     dates: 'April 2021 – Present',
     bullets: [
-      'Distributed Systems & Cloud Architecture: Architected and optimized event-driven microservices and high-throughput data pipelines on AWS. Led critical production operations including deploying global secondary index (GSI) changes and managing asynchronous queues (SQS), ensuring highly available and fault-tolerant system integrations.',
+      'Enabled backfill and data streaming between two systems using AWS SQS and DynamoDB Streams. Led production-critical work including global secondary index (GSI) rollouts and asynchronous queue-backed integrations, keeping services highly available and fault-tolerant.',
       'API Performance & Scale: Diagnosed and resolved complex integration bottlenecks in production. Dramatically reduced API latency by implementing JWT token caching, optimizing backend database access times (e.g., reducing RESTORE audit queries to ~520ms), and streamlining DynamoDB duplicate check validations.',
-      'DevOps, CI/CD & Secure Deployments: Migrated web services to managed CI/CD deployment pipelines and standardized service meshes. Containerized applications with Docker/AWS ECS and enforced robust security postures using AWS Secrets Manager, Vault, and automated certificate rotations.',
+      'Engineered automated CI/CD pipelines using Terraform to provision multi-region AWS infrastructure, shortening deployment cycles while ensuring full environment parity across stages. Migrated web services to managed pipelines, standardized service meshes, containerized workloads on Docker/AWS ECS, and hardened secure deployments with AWS Secrets Manager, HashiCorp Vault, and automated certificate rotations.',
       'Production Reliability & Observability: Elevated core services to Tier-1 reliability (99.95% availability) by implementing synthetic testing for public endpoints and real-time observability dashboards (Grafana, CloudWatch, Argus). Led war rooms including mitigating a major queue drain incident and catching a critical silent data loss bug.',
       'Technical Leadership: Led Sev-3 Root Cause Analyses, authored design documents and operational playbooks, mentored engineering teams, conducted rigorous code reviews, and spearheaded initiatives to burn down technical debt.',
     ],

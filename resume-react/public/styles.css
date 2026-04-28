@@ -180,19 +180,48 @@ p {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: var(--navy);
+    background: linear-gradient(
+        180deg,
+        #12082e 0%,
+        #1c0f4a 16%,
+        #2a1a62 36%,
+        #3d2a86 54%,
+        #4d3d96 72%,
+        #5a4e9e 88%,
+        #4a3d82 100%
+    );
 }
 
-/* Star-dot field */
+/* Subtle star-dot field (under SVG burst) */
 .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.4;
+    opacity: 0.22;
+}
+
+/* Radial sunburst lines */
+.hero-radial-burst {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.92;
+}
+
+.hero-radial-burst-lines {
+    fill: none;
+}
+
+.hero-radial-burst-nodes {
+    pointer-events: none;
 }
 
 /* Blob container */
@@ -305,13 +334,14 @@ p {
     opacity: 0;
     clip-path: inset(0 0 100% 0);
     animation: clipReveal 1.0s var(--ease-out-expo) 0.5s forwards;
-    text-shadow: none;
+    text-shadow: 0 2px 28px rgba(0, 0, 0, 0.55);
     line-height: 1;
 }
 
 .hero-title-accent {
     color: var(--yellow);
     display: inline-block;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
 }
 
 /* Subtitle */
@@ -319,7 +349,7 @@ p {
     font-size: clamp(1rem, 2.2vw, 1.4rem);
     font-weight: 500;
     margin-bottom: 0.75rem;
-    color: var(--text-on-dark-muted);
+    color: rgba(255, 255, 255, 0.82);
     opacity: 0;
     animation: revealUp 0.8s var(--ease-out-expo) 0.9s forwards;
     letter-spacing: -0.01em;
@@ -329,7 +359,7 @@ p {
 .hero-location {
     font-family: var(--font-main);
     font-size: 0.82rem;
-    color: var(--text-on-dark-muted);
+    color: rgba(255, 255, 255, 0.72);
     margin-bottom: var(--spacing-lg);
     letter-spacing: 0.04em;
     opacity: 0;
@@ -391,21 +421,28 @@ p {
 .seattle-skyline {
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    max-width: 100%;
     height: 220px;
     pointer-events: none;
     z-index: 2;
     fill: none;
-    stroke: rgba(155, 127, 247, 0.70);
-    stroke-width: 1.5;
+    stroke: none;
+    opacity: 0;
+    animation: skylineReveal 2s var(--ease-out-expo) 0.6s forwards;
+}
+
+.seattle-skyline-path {
+    fill: none;
+    stroke: rgba(175, 155, 250, 0.92);
+    stroke-width: 1.35;
     stroke-linecap: round;
     stroke-linejoin: round;
-    opacity: 0;
-    animation: skylineReveal 2s var(--ease-out-expo) 0.6s forwards,
-               skylineDraw 3.5s ease-out 0.6s forwards;
-    stroke-dasharray: 6000;
-    stroke-dashoffset: 6000;
+    stroke-dasharray: 9000;
+    stroke-dashoffset: 9000;
+    animation: skylineDraw 3.5s ease-out 0.6s forwards;
 }
 
 @keyframes skylineDraw {
