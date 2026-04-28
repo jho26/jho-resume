@@ -1,5 +1,62 @@
 import React from 'react';
 
+/** Radial line burst + nodes (hero decorative layer). */
+const HeroRadialBurst: React.FC = () => {
+  const cx = 720;
+  const cy = 220;
+  const n = 56;
+  const lines: React.ReactNode[] = [];
+  const nodes: React.ReactNode[] = [];
+
+  for (let i = 0; i < n; i += 1) {
+    const angle = (i / n) * Math.PI * 2;
+    const lenJitter = ((i * 17) % 100) + ((i * 11) % 72);
+    const length = 260 + lenJitter * (0.55 + (i % 4) * 0.22);
+    const x2 = cx + Math.cos(angle) * length;
+    const y2 = cy + Math.sin(angle) * length;
+    lines.push(
+      <line
+        key={`ray-${i}`}
+        x1={cx}
+        y1={cy}
+        x2={x2}
+        y2={y2}
+        stroke="rgba(232, 242, 255, 0.38)"
+        strokeWidth={1}
+        strokeLinecap="round"
+      />,
+    );
+    nodes.push(
+      <circle
+        key={`end-${i}`}
+        cx={x2}
+        cy={y2}
+        r={i % 5 === 0 ? 2.8 : 1.6}
+        fill="rgba(240, 248, 255, 0.55)"
+      />,
+    );
+    if (i % 2 === 0) {
+      const t = 0.35 + ((i * 3) % 20) / 100;
+      const mx = cx + Math.cos(angle) * (length * t);
+      const my = cy + Math.sin(angle) * (length * t);
+      nodes.push(<circle key={`mid-${i}`} cx={mx} cy={my} r={1.2} fill="rgba(232, 242, 255, 0.32)" />);
+    }
+  }
+
+  return (
+    <svg
+      className="hero-radial-burst"
+      viewBox="0 0 1440 800"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g className="hero-radial-burst-lines">{lines}</g>
+      <g className="hero-radial-burst-nodes">{nodes}</g>
+    </svg>
+  );
+};
+
 const SeattleSkyline: React.FC = () => (
   <svg
     className="seattle-skyline"
@@ -108,6 +165,7 @@ const Hero: React.FC = () => {
   return (
     <section id="hero" className="hero resume-hero">
       <div className="resume-hero-background" aria-hidden="true"></div>
+      <HeroRadialBurst />
       <div className="hero-blob-yellow" aria-hidden="true"></div>
       <div className="hero-blob-pink" aria-hidden="true"></div>
 

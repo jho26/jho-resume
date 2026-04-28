@@ -175,24 +175,54 @@ p {
 
 .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: var(--navy);
+    background: linear-gradient(
+        180deg,
+        #12082e 0%,
+        #1c0f4a 14%,
+        #2a1a62 32%,
+        #3d2a86 50%,
+        #5c4eb0 68%,
+        #8ca3e0 84%,
+        #c5d6f5 96%,
+        #e8f0ff 100%
+    );
 }
 
-/* Star-dot field */
+/* Subtle star-dot field (under SVG burst) */
 .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.4;
+    opacity: 0.22;
+}
+
+/* Radial sunburst lines */
+.hero-radial-burst {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.92;
+}
+
+.hero-radial-burst-lines {
+    fill: none;
+}
+
+.hero-radial-burst-nodes {
+    pointer-events: none;
 }
 
 /* Blob container */
@@ -378,6 +408,135 @@ p {
     color: var(--text-on-dark-muted);
     letter-spacing: 0.08em;
     text-transform: uppercase;
+}
+
+/* ==========================================
+   Keyframes
+   ========================================== */
+
+/* ==========================================
+   Seattle Skyline
+   ========================================== */
+
+.seattle-skyline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    pointer-events: none;
+    z-index: 2;
+    fill: none;
+    stroke: rgba(155, 127, 247, 0.70);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0;
+    animation: skylineReveal 2s var(--ease-out-expo) 0.6s forwards,
+               skylineDraw 3.5s ease-out 0.6s forwards;
+    stroke-dasharray: 6000;
+    stroke-dashoffset: 6000;
+}
+
+@keyframes skylineDraw {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes skylineReveal {
+    0%   { opacity: 0; }
+    15%  { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+/* ==========================================
+   Moon
+   ========================================== */
+
+.hero-moon {
+    position: absolute;
+    top: 8%;
+    right: 12%;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 38%, #fffbe6 0%, #ffd93d 40%, #ffaa00 100%);
+    box-shadow:
+        0 0 30px 12px rgba(255, 217, 61, 0.35),
+        0 0 80px 30px rgba(255, 170, 0, 0.18),
+        0 0 140px 60px rgba(255, 140, 0, 0.08);
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    animation: moonReveal 1.5s var(--ease-out-expo) 0.8s forwards;
+}
+
+@keyframes moonReveal {
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* ==========================================
+   Floating Clouds
+   ========================================== */
+
+.hero-cloud {
+    position: absolute;
+    pointer-events: none;
+    z-index: 3;
+    fill: rgba(255, 255, 255, 0.06);
+    stroke: rgba(155, 127, 247, 0.25);
+    stroke-width: 1;
+}
+
+.hero-cloud-1 {
+    width: 220px;
+    bottom: 28%;
+    left: -60px;
+    animation: cloudDrift1 28s linear infinite;
+    opacity: 0;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+.hero-cloud-2 {
+    width: 160px;
+    bottom: 38%;
+    left: -40px;
+    animation: cloudDrift2 38s linear infinite;
+    opacity: 0;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+}
+
+.hero-cloud-3 {
+    width: 260px;
+    bottom: 20%;
+    left: -80px;
+    animation: cloudDrift3 50s linear infinite;
+    opacity: 0;
+    animation-delay: 8s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes cloudDrift1 {
+    0%   { transform: translateX(-60px);  opacity: 0; }
+    5%   { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateX(calc(100vw + 260px)); opacity: 0; }
+}
+
+@keyframes cloudDrift2 {
+    0%   { transform: translateX(-40px);  opacity: 0; }
+    5%   { opacity: 0.7; }
+    90%  { opacity: 0.7; }
+    100% { transform: translateX(calc(100vw + 200px)); opacity: 0; }
+}
+
+@keyframes cloudDrift3 {
+    0%   { transform: translateX(-80px);  opacity: 0; }
+    5%   { opacity: 0.5; }
+    90%  { opacity: 0.5; }
+    100% { transform: translateX(calc(100vw + 300px)); opacity: 0; }
 }
 
 /* ==========================================
