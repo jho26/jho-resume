@@ -7,6 +7,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import './App.css';
 
+const Summary = lazy(() => import('./components/Summary'));
 const Experience = lazy(() => import('./components/Experience'));
 const Skills = lazy(() => import('./components/Skills'));
 const Education = lazy(() => import('./components/Education'));
@@ -23,6 +24,8 @@ function App() {
         <Hero />
         <div className="section-divider" aria-hidden="true" />
         <Suspense fallback={<LoadingSpinner size="large" />}>
+          <Summary />
+          <div className="section-divider" aria-hidden="true" />
           <Experience />
           <div className="section-divider" aria-hidden="true" />
           <Skills />

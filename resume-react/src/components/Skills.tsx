@@ -11,27 +11,32 @@ const skillGroups: SkillGroup[] = [
   {
     label: 'Cloud & Infrastructure',
     emoji: '☁️',
-    skills: ['AWS', 'DynamoDB', 'SQS', 'ECS', 'CloudWatch', 'Secrets Manager', 'S3', 'Lambda'],
+    skills: ['AWS Lambda', 'DynamoDB', 'SQS', 'SES', 'KMS', 'IAM', 'CloudWatch', 'ECR', 'Secrets Manager', 'ECS', 'Terraform', 'Kubernetes', 'Hyperforce'],
   },
   {
-    label: 'DevOps & CI/CD',
+    label: 'CI/CD & DevOps',
     emoji: '🔧',
-    skills: ['Docker', 'CI/CD Pipelines', 'Vault', 'Grafana', 'Argus', 'Synthetic Testing', 'Certificate Rotation'],
+    skills: ['GitLab CI/CD', 'Falcon CI/CD (FIT)', 'Docker', 'Bamboo', 'Multi-environment pipelines', 'MESH/Ingress networking'],
+  },
+  {
+    label: 'Observability',
+    emoji: '📡',
+    skills: ['CloudWatch', 'Splunk', 'Prometheus', 'PagerDuty', 'Argus', 'New Relic', 'Grafana', 'Fluentbit', 'Kafka'],
   },
   {
     label: 'Languages & Frameworks',
     emoji: '💻',
-    skills: ['TypeScript', 'Java', 'Ruby', 'Python', 'Chef', 'SQL'],
+    skills: ['Python', 'Java', 'SQL', 'Spring Boot', 'Apache Maven', 'JUnit 5', 'Gradle'],
   },
   {
-    label: 'Architecture',
-    emoji: '🏗️',
-    skills: ['Microservices', 'Event-Driven', 'REST APIs', 'JWT', 'Distributed Systems', 'Service Mesh'],
+    label: 'Licensing & Compliance',
+    emoji: '🔐',
+    skills: ['Flexera / FlexNet', 'ECAP Licensing', 'Nexus'],
   },
   {
-    label: 'Leadership',
-    emoji: '🎯',
-    skills: ['Technical Design', 'Code Review', 'Root Cause Analysis', 'Mentoring', 'Operational Playbooks'],
+    label: 'AI Tools',
+    emoji: '🤖',
+    skills: ['Cursor', 'Claude', 'Windsurf'],
   },
   {
     label: 'Languages (Spoken)',
