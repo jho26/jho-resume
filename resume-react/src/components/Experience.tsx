@@ -103,16 +103,33 @@ const ExperienceViz: React.FC<{ type: ExperienceVizType }> = ({ type }) => {
 
 const jobs: Job[] = [
   {
-    role: 'Senior Software Engineer',
-    company: 'Tableau Software at Salesforce',
-    dates: 'April 2021 – Present',
+    role: 'Software Engineer — SMTS',
+    company: 'Salesforce',
+    dates: 'Feb 2025 – Present · San Francisco, CA',
     viz: 'area',
     bullets: [
-      'Enabled backfill and data streaming between two systems using AWS SQS and DynamoDB Streams. Led production-critical work including global secondary index (GSI) rollouts and asynchronous queue-backed integrations, keeping services highly available and fault-tolerant.',
-      'API Performance & Scale: Diagnosed and resolved complex integration bottlenecks in production. Dramatically reduced API latency by implementing JWT token caching, optimizing backend database access times (e.g., reducing RESTORE audit queries to ~520ms), and streamlining DynamoDB duplicate check validations.',
-      'Engineered automated CI/CD pipelines using Terraform to provision multi-region AWS infrastructure, shortening deployment cycles while ensuring full environment parity across stages. Migrated web services to managed pipelines, standardized service meshes, containerized workloads on Docker/AWS ECS, and hardened secure deployments with AWS Secrets Manager, HashiCorp Vault, and automated certificate rotations.',
-      'Production Reliability & Observability: Elevated core services to Tier-1 reliability (99.95% availability) by implementing synthetic testing for public endpoints and real-time observability dashboards (Grafana, CloudWatch, Argus). Led war rooms including mitigating a major queue drain incident and catching a critical silent data loss bug.',
-      'Technical Leadership: Led Sev-3 Root Cause Analyses, authored design documents and operational playbooks, mentored engineering teams, conducted rigorous code reviews, and spearheaded initiatives to burn down technical debt.',
+      'Modernized Data Infrastructure: Led the transition from legacy batch processing to a highly reliable, real-time data synchronization pipeline, ensuring seamless data delivery across global regions.',
+      'Enhanced System Reliability: Established comprehensive end-to-end monitoring across all deployment stages, significantly improving system visibility and accelerating incident resolution times.',
+      'Optimized Release Engineering: Overhauled deployment pipelines by implementing stricter release controls and automated testing, reducing the propagation of system errors and catching software regressions earlier in the development lifecycle.',
+      'Improved Operational Excellence: Bolstered platform reliability and streamlined incident response protocols, reducing production failures and creating smoother handoffs for on-call engineering teams.',
+      'Drove Cross-Functional Delivery: Partnered with external engineering teams to define project scope, establish delivery timelines, and rapidly escalate/resolve configuration bottlenecks to unblock critical data integrations.',
+      'Led Rapid Incident Response: Directed troubleshooting and recovery efforts during critical production outages, rapidly restoring normal system throughput and mitigating customer impact.',
+      'Championed AI Adoption: Pioneered the use of AI-assisted development tools within the team, establishing best practices that improved code review efficiency and reduced post-release defects.',
+    ],
+  },
+  {
+    role: 'Software Engineer — MTS',
+    company: 'Salesforce',
+    dates: 'Apr 2021 – Feb 2025 · San Francisco, CA',
+    viz: 'bars',
+    bullets: [
+      'Strategic Platform Migration: Directed the migration of core licensing services to a modernized internal platform, establishing scalable infrastructure and unblocking engineering workflows.',
+      'Recognized with Spot Bonus (Q3 2023) for Operational Excellence: Awarded for driving a strategic system monitoring migration (to Grafana) that entirely eliminated external vendor costs. Proactively collaborated with senior engineering leadership to optimize alert accuracy—eliminating 30+ false positives and refining high-urgency notifications—while continuously innovating dashboards for enhanced system visibility.',
+      'Ensured High Availability: Implemented continuous availability monitoring across all public-facing endpoints, directly supporting and validating rigorous 99.95% uptime SLA targets.',
+      'Elevated Service Standards: Upgraded a core service to top-tier operational status by designing automated health checks and performance dashboards, drastically reducing detection-to-response times for support engineers.',
+      'Mitigated Production Risks: Proactively identified and resolved a critical software defect prior to customer release, successfully averting a major production incident. Led root-cause analyses for high-severity issues, delivering systemic improvements to prevent recurrences.',
+      'Managed End-to-End Delivery: Owned the full deployment lifecycle and continuous delivery for four critical licensing services across all development and production environments.',
+      'Maintained Security & Compliance: Proactively drove comprehensive platform security upgrades and standardized team-wide operational playbooks, ensuring continuous compliance well ahead of corporate deprecation deadlines.',
     ],
   },
   {

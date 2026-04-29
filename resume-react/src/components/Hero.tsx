@@ -57,28 +57,6 @@ const HeroRadialBurst: React.FC = () => {
   );
 };
 
-const SeattleSkyline: React.FC = () => (
-  <svg
-    className="seattle-skyline"
-    viewBox="0 0 1440 260"
-    preserveAspectRatio="xMidMax meet"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    {/* Single-stroke silhouette: left wall → roof peaks & valleys → right wall → baseline (minimalist print style) */}
-    <path
-      className="seattle-skyline-path"
-      d="
-        M 200 224
-        L 200 152
-        L 218 152 L 218 138 L 236 138 L 236 158 L 254 158 L 254 128 L 274 128 L 274 145 L 294 145 L 294 112 L 316 112 L 316 132 L 336 132
-        L 336 98 L 354 98 L 354 68 L 366 42 L 378 28 L 390 20 L 402 28 L 414 42 L 426 68 L 426 98 L 444 98 L 444 78 L 466 78 L 466 58 L 492 58 L 492 38 L 522 38 L 522 18 L 556 18 L 556 4 L 590 4 L 590 16 L 626 16 L 626 32 L 664 32 L 664 50 L 702 50 L 702 72 L 742 72 L 742 98 L 786 98 L 786 118 L 832 118 L 832 138 L 880 138 L 880 155 L 932 155 L 932 168 L 988 168 L 988 178 L 1048 178 L 1048 186 L 1112 186 L 1112 192 L 1180 192 L 1180 196 L 1240 196
-        L 1240 224 L 200 224 Z
-      "
-    />
-  </svg>
-);
-
 /* Individual cloud SVG paths, each animated at different speeds/positions */
 const Cloud1: React.FC = () => (
   <svg className="hero-cloud hero-cloud-1" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -124,9 +102,6 @@ const Hero: React.FC = () => {
       <Cloud2 />
       <Cloud3 />
 
-      {/* Seattle skyline sits at bottom */}
-      <SeattleSkyline />
-
       <div className="hero-content">
         <p className="hero-eyebrow">
           Senior Software Engineer
@@ -136,10 +111,6 @@ const Hero: React.FC = () => {
           Jonathan<br />
           <span className="hero-title-accent">Ho</span>
         </h1>
-
-        <p className="hero-subtitle">
-          Event-Driven Architecture · Secure Deployments · Reliability & Quality
-        </p>
 
         <p className="hero-location">
           Tableau / Salesforce &nbsp;·&nbsp; Seattle, WA
