@@ -1,7 +1,7 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-type ExperienceVizType = 'area' | 'bars' | 'scatter';
+type ExperienceVizType = 'area' | 'bars' | 'scatter' | 'radial';
 
 interface Job {
   role: string;
@@ -60,9 +60,34 @@ const VizScatter: React.FC = () => (
   </svg>
 );
 
+
+const VizRadial: React.FC = () => (
+  <svg className="card-viz card-viz-tr" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+    {/* background rings */}
+    <circle cx="40" cy="40" r="30" fill="none" stroke="rgba(123,92,240,0.08)" strokeWidth="6"/>
+    <circle cx="40" cy="40" r="20" fill="none" stroke="rgba(123,92,240,0.06)" strokeWidth="5"/>
+    <circle cx="40" cy="40" r="10" fill="none" stroke="rgba(123,92,240,0.05)" strokeWidth="4"/>
+    {/* outer arc ~78% */}
+    <circle cx="40" cy="40" r="30" fill="none" stroke="rgba(123,92,240,0.55)" strokeWidth="6"
+      strokeDasharray="147 189" strokeDashoffset="47" strokeLinecap="round"
+      transform="rotate(-90 40 40)"/>
+    {/* mid arc ~60% */}
+    <circle cx="40" cy="40" r="20" fill="none" stroke="rgba(123,92,240,0.40)" strokeWidth="5"
+      strokeDasharray="75 126" strokeDashoffset="31" strokeLinecap="round"
+      transform="rotate(-90 40 40)"/>
+    {/* inner arc ~45% */}
+    <circle cx="40" cy="40" r="10" fill="none" stroke="rgba(123,92,240,0.30)" strokeWidth="4"
+      strokeDasharray="28 63" strokeDashoffset="16" strokeLinecap="round"
+      transform="rotate(-90 40 40)"/>
+    {/* center dot */}
+    <circle cx="40" cy="40" r="2" fill="rgba(123,92,240,0.50)"/>
+  </svg>
+);
+
 const ExperienceViz: React.FC<{ type: ExperienceVizType }> = ({ type }) => {
-  if (type === 'area') return <VizArea />;
-  if (type === 'bars') return <VizBars />;
+  if (type === 'area')    return <VizArea />;
+  if (type === 'bars')    return <VizBars />;
+  if (type === 'radial')  return <VizRadial />;
   return <VizScatter />;
 };
 
@@ -95,7 +120,7 @@ const jobs: Job[] = [
     role: 'Software Engineer (Contract)',
     company: 'Microsoft via Insight Global',
     dates: 'Aug 2019 – Apr 2021 · Greater Seattle Area',
-    viz: 'bars',
+    viz: 'radial',
     bullets: [
       'Designed and developed enterprise-level test infrastructure for automating provisioning of macOS machines, benefiting multiple Microsoft Office for Mac teams.',
       'Applied spec-driven design and Agile practices to validate new features and ensure cross-macOS-version supportability; contributed to the open-source "macos-cookbook" on GitHub.',

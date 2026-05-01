@@ -128,6 +128,14 @@ const Hero: React.FC = () => {
           >
             LinkedIn →
           </a>
+          <a
+            href="https://github.com/jho26/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-button-secondary"
+          >
+            GitHub →
+          </a>
         </div>
 
       </div>

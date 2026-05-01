@@ -12,6 +12,7 @@ const contactItems: ContactItem[] = [
   { icon: '📧', label: 'Email',    value: 'uschohk@hotmail.com',  href: 'mailto:uschohk@hotmail.com' },
   { icon: '📱', label: 'Phone',    value: '(425) 301-5348',        href: 'tel:+14253015348' },
   { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/siuho', href: 'https://linkedin.com/in/siuho' },
+  { icon: '🐙', label: 'GitHub',   value: 'github.com/jho26',      href: 'https://github.com/jho26/' },
   { icon: '📍', label: 'Location', value: 'Seattle, WA 98122' },
 ];
 

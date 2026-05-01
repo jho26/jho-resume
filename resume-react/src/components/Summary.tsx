@@ -14,12 +14,12 @@ const Summary: React.FC = () => {
           <span className="section-label">About</span>
           <h2 className="section-title">Summary</h2>
           <p className="summary-body">
-            Results-driven Senior Software Engineer specializing in real-time data synchronization,
-            cloud-native observability, and secure platform architecture. Demonstrated success at
-            Salesforce transitioning legacy batch systems into highly reliable, real-time AWS
-            pipelines. Award-winning engineer who effectively bridges the gap between complex
-            infrastructure challenges and critical business objectives, consistently delivering
-            secure, high-availability platforms while mitigating production risks.
+            Senior Software Engineer with 10+ years of experience building distributed systems,
+            real-time data pipelines, and cloud-native infrastructure on AWS at enterprise scale.
+            Contributed to a multi-region event-driven pipeline enabling real-time data streaming
+            and a 22M record backfill between Salesforce and Tableau Cloud Manager — processing
+            up to 150K events/min. Known for end-to-end ownership, CI/CD expertise, cross-functional
+            technical leadership, and driving reliability improvements through automation and AI tooling.
           </p>
         </div>
       </div>
