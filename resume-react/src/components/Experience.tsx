@@ -103,54 +103,33 @@ const ExperienceViz: React.FC<{ type: ExperienceVizType }> = ({ type }) => {
 
 const jobs: Job[] = [
   {
-    role: 'Software Engineer — SMTS',
-    company: 'Salesforce',
-    dates: 'Feb 2025 – Present · San Francisco, CA',
-    viz: 'area',
+    role: 'Senior Software Engineer',
+    company: 'Tableau Software at Salesforce',
+    dates: 'April 2021 – Present',
     bullets: [
-      'Led design and delivery of an event-driven, multi-region real-time pipeline replacing legacy batch sync with encrypted cross-account streaming.',
-      'Drove CI/CD re-architecture from manual AWS console edits to stage-gated pipelines; established deployment standards and mentored team as CI/CD SME.',
-      'Responsible for development and operation of a Tier 1 production service; designed monitoring, health checks, SLA validation, and led Sev-3 RCA.',
-      'Evangelized & led migration to internal observability platform and adoption of AI-assisted development tools, delivering reusable prompt templates.',
-      'Led cross-team alignment to unblock a critical data dependency, driving scope and timelines to resolution.',
+      'Distributed Systems & Cloud Architecture: Architected and optimized event-driven microservices and high-throughput data pipelines on AWS. Led critical production operations including deploying global secondary index (GSI) changes and managing asynchronous queues (SQS), ensuring highly available and fault-tolerant system integrations.',
+      'API Performance & Scale: Diagnosed and resolved complex integration bottlenecks in production. Dramatically reduced API latency by implementing JWT token caching, optimizing backend database access times (e.g., reducing RESTORE audit queries to ~520ms), and streamlining DynamoDB duplicate check validations.',
+      'DevOps, CI/CD & Secure Deployments: Migrated web services to managed CI/CD deployment pipelines and standardized service meshes. Containerized applications with Docker/AWS ECS and enforced robust security postures using AWS Secrets Manager, Vault, and automated certificate rotations.',
+      'Production Reliability & Observability: Elevated core services to Tier-1 reliability (99.95% availability) by implementing synthetic testing for public endpoints and real-time observability dashboards (Grafana, CloudWatch, Argus). Led war rooms including mitigating a major queue drain incident and catching a critical silent data loss bug.',
+      'Technical Leadership: Led Sev-3 Root Cause Analyses, authored design documents and operational playbooks, mentored engineering teams, conducted rigorous code reviews, and spearheaded initiatives to burn down technical debt.',
     ],
   },
   {
-    role: 'Software Engineer — MTS',
-    company: 'Salesforce',
-    dates: 'Apr 2021 – Feb 2025 · San Francisco, CA',
-    viz: 'bars',
-    bullets: [
-      'Responsible for development and operation of four licensing platform services across the full deployment lifecycle, including next-gen cloud platform migration.',
-      'Evangelized & led observability vendor migration, eliminating external costs; recognized with Spot Bonus (Q3 2023).',
-      'Drove reliability initiatives — continuous monitoring, health checks, and dashboards — supporting 99.95% uptime SLA targets.',
-      'Maintained security & compliance by driving platform upgrades and standardizing operational playbooks ahead of deprecation deadlines.',
-    ],
-  },
-  {
-    role: 'Software Engineer',
+    role: 'Software Engineer (Contract)',
     company: 'Microsoft via Insight Global',
     dates: 'August 2019 – April 2021',
-    viz: 'bars',
     bullets: [
-      'Designed and developed enterprise-level test infrastructure, integrating it into code to support the Microsoft Office team.',
-      'Utilized Ruby and the Chef platform to design systems for automating provisioning of macOS machines, benefiting multiple Microsoft Office for Mac teams.',
-      'Demonstrated proficiency in Agile processes, swiftly incorporating customer feedback to ensure supportability across various macOS versions.',
-      'Committed to spec-driven design principles, minimizing testing gaps to validate new functionalities and proactively prevent future bugs.',
-      'Actively contributed to the open-source Chef cookbook "macos-cookbook" hosted on Microsoft\'s GitHub repository.',
+      'Designed and developed enterprise-level test infrastructure for automating provisioning of macOS machines, benefiting multiple Microsoft Office for Mac teams.',
+      'Applied spec-driven design and Agile practices to validate new features and ensure cross-macOS-version supportability; contributed to the open-source "macos-cookbook" on GitHub.',
     ],
   },
   {
     role: 'Senior Technical Support Engineer',
     company: 'Tableau Software',
     dates: 'January 2015 – August 2019',
-    viz: 'scatter',
     bullets: [
-      'Independently diagnosed and resolved complex application issues, including user experience latency, in customer environments at scale.',
-      'Improved team case closing metrics by proactively identifying and documenting previously undocumented issues through internal knowledge base (KB) articles.',
-      'Assisted fellow engineers by sharing insights and solutions through comprehensive troubleshooting guides.',
-      'Performed root cause analysis leveraging Tableau log files and various troubleshooting tools to provide effective guidance to customers.',
-      'Maintained high customer satisfaction through excellent communication, problem-solving skills, and attention to detail.',
+      'Served as technical escalation point for enterprise Tableau Server customers — diagnosing complex root causes across networking, authentication, and performance layers, and partnering directly with engineering to reproduce, document, and resolve critical product defects, accelerating fix cycles for high-priority accounts.',
+      'Managed a portfolio of high-severity cases end-to-end across Tableau Desktop and Server on Windows and macOS — maintaining global SLA compliance and building deep architectural expertise that enabled faster resolution and internal knowledge sharing.',
     ],
   },
 ];
@@ -197,7 +176,7 @@ const Experience: React.FC = () => {
         </div>
         <div className="experience-grid">
           {jobs.map((job, i) => (
-            <ExperienceCard key={job.company} job={job} delay={`${i * 0.1}s`} />
+            <ExperienceCard key={job.company + job.role} job={job} delay={`${i * 0.1}s`} />
           ))}
         </div>
       </div>
