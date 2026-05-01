@@ -11,27 +11,27 @@ const skillGroups: SkillGroup[] = [
   {
     label: 'Cloud & Infrastructure',
     emoji: '☁️',
-    skills: ['AWS', 'DynamoDB', 'SQS', 'ECS', 'CloudWatch', 'Secrets Manager', 'S3', 'Lambda'],
+    skills: ['AWS Lambda', 'DynamoDB', 'SQS', 'ECS', 'CloudWatch', 'Secrets Manager', 'ECR', 'IAM', 'Terraform', 'Kubernetes', 'Docker'],
   },
   {
     label: 'CI/CD & DevOps',
     emoji: '🔧',
-    skills: ['Docker', 'CI/CD Pipelines', 'Vault', 'Grafana', 'Argus', 'Synthetic Testing', 'Certificate Rotation'],
+    skills: ['GitLab CI/CD', 'Stage-Gated Pipelines', 'Multi-Environment Deployments', 'Synthetic Testing', 'Falcon FIT'],
   },
   {
     label: 'Languages & Frameworks',
     emoji: '💻',
-    skills: ['TypeScript', 'Java', 'Ruby', 'Python', 'Chef', 'SQL'],
+    skills: ['Java', 'Python', 'Ruby', 'SQL', 'Spring Boot', 'Apache Maven', 'Gradle', 'Chef', 'REST APIs'],
   },
   {
-    label: 'Architecture',
-    emoji: '🏗️',
-    skills: ['Microservices', 'Event-Driven', 'REST APIs', 'JWT', 'Distributed Systems', 'Service Mesh'],
+    label: 'Observability',
+    emoji: '📊',
+    skills: ['Grafana', 'CloudWatch', 'Splunk', 'Argus', 'New Relic'],
   },
   {
-    label: 'Leadership',
-    emoji: '🎯',
-    skills: ['Technical Design', 'Code Review', 'Root Cause Analysis', 'Mentoring', 'Operational Playbooks'],
+    label: 'AI Tools',
+    emoji: '🤖',
+    skills: ['Cursor', 'Claude Code', 'Google Gemini'],
   },
   {
     label: 'Languages (Spoken)',

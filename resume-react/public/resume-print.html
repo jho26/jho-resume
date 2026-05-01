@@ -7,252 +7,153 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
-    @page {
-      size: letter;
-      margin: 0.42in 0.5in 0.42in 0.5in;
-    }
-
+    @page { size: letter; margin: 0.42in 0.5in 0.42in 0.5in; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html, body {
       font-family: 'Carlito', 'Calibri', Arial, sans-serif;
-      font-size: 9pt;
-      line-height: 1.36;
-      color: #000;
-      background: #fff;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
+      font-size: 9pt; line-height: 1.36; color: #000; background: #fff;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
     }
-
-    /* ── Header ── */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 4pt;
-    }
-
-    .name {
-      font-size: 17pt;
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: 0.01em;
-    }
-
-    .title {
-      font-size: 9.2pt;
-      color: #444;
-      margin-top: 2pt;
-    }
-
-    .contact {
-      text-align: right;
-      font-size: 8.4pt;
-      line-height: 1.5;
-      color: #222;
-    }
-
+    .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4pt; }
+    .name { font-size: 17pt; font-weight: 700; line-height: 1.05; letter-spacing: 0.01em; }
+    .title { font-size: 9.2pt; color: #444; margin-top: 2pt; }
+    .contact { text-align: right; font-size: 8.4pt; line-height: 1.5; color: #222; }
     .contact a { color: #000; text-decoration: none; }
-
-    /* ── Section ── */
     .section { margin-top: 5pt; }
-
-    .section-title {
-      font-size: 8.8pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      border-bottom: 1pt solid #000;
-      padding-bottom: 1pt;
-      margin-bottom: 3.5pt;
-    }
-
-    /* ── Summary ── */
+    .section-title { font-size: 8.8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; border-bottom: 1pt solid #000; padding-bottom: 1pt; margin-bottom: 3.5pt; }
     .summary { font-size: 8.6pt; line-height: 1.42; }
-
-    /* ── Job ── */
-    .job { margin-bottom: 4.5pt; }
+    .job { margin-bottom: 4pt; }
     .job:last-child { margin-bottom: 0; }
-
-    .job-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 6pt;
-    }
-
+    .job-top { display: flex; justify-content: space-between; align-items: baseline; gap: 6pt; }
     .job-company { font-size: 9pt; font-weight: 700; }
-    .job-dates   { font-size: 8.2pt; color: #222; white-space: nowrap; flex-shrink: 0; }
-
-    .job-role {
-      font-size: 8.6pt;
-      font-style: italic;
-      color: #333;
-      margin-bottom: 2pt;
-    }
-
-    ul.bullets {
-      list-style: disc;
-      padding-left: 12pt;
-      margin: 0;
-    }
-
-    ul.bullets li {
-      font-size: 8.4pt;
-      line-height: 1.38;
-      margin-bottom: 1pt;
-    }
-
+    .job-dates { font-size: 8.2pt; color: #222; white-space: nowrap; flex-shrink: 0; }
+    .job-role { font-size: 8.6pt; font-style: italic; color: #333; margin-bottom: 2pt; }
+    ul.bullets { list-style: disc; padding-left: 12pt; margin: 0; }
+    ul.bullets li { font-size: 8.4pt; line-height: 1.38; margin-bottom: 1pt; }
     ul.bullets li:last-child { margin-bottom: 0; }
-
-    /* ── Skills ── */
     .skills-table { width: 100%; border-collapse: collapse; }
-
-    .skills-table td {
-      vertical-align: top;
-      padding: 0 8pt 2.5pt 0;
-      font-size: 8.4pt;
-      line-height: 1.42;
-      width: 50%;
-    }
-
+    .skills-table td { vertical-align: top; padding: 0 8pt 2.5pt 0; font-size: 8.4pt; line-height: 1.42; width: 50%; }
     .skills-table td:last-child { padding-right: 0; }
-
     .sk { font-weight: 700; }
-
-    /* ── Education ── */
-    .edu-entry { margin-bottom: 3.5pt; }
+    .edu-entry { margin-bottom: 3pt; }
     .edu-entry:last-child { margin-bottom: 0; }
-
-    .edu-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 6pt;
-    }
-
+    .edu-top { display: flex; justify-content: space-between; align-items: baseline; gap: 6pt; }
     .edu-school { font-size: 9pt; font-weight: 700; }
-    .edu-dates  { font-size: 8.2pt; color: #222; white-space: nowrap; flex-shrink: 0; }
+    .edu-dates { font-size: 8.2pt; color: #222; white-space: nowrap; flex-shrink: 0; }
     .edu-degree { font-size: 8.6pt; font-style: italic; color: #333; }
     .edu-detail { font-size: 8pt; color: #555; margin-top: 0.5pt; }
-
-    @media print {
-      a { color: #000; text-decoration: none; }
-    }
+    @media print { a { color: #000; text-decoration: none; } }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header class="header">
     <div>
       <div class="name">Siu (Jonathan) Ho</div>
       <div class="title">Senior Software Engineer</div>
     </div>
     <div class="contact">
-      11096 26th Ave, Seattle, WA 98125<br>
+      Seattle, WA<br>
       (425) 301-5348 &nbsp;·&nbsp; <a href="mailto:uschohk@hotmail.com">uschohk@hotmail.com</a><br>
       <a href="https://linkedin.com/in/siuho">linkedin.com/in/siuho</a> &nbsp;·&nbsp; <a href="https://j-ho.us">j-ho.us</a>
     </div>
   </header>
 
-  <!-- Summary -->
   <section class="section">
     <div class="section-title">Summary</div>
-    <p class="summary">Results-driven Senior Software Engineer specializing in real-time data synchronization, cloud-native observability, and secure platform architecture. Demonstrated success at Salesforce transitioning legacy batch systems into highly reliable, real-time AWS pipelines. Award-winning engineer who effectively bridges the gap between complex infrastructure challenges and critical business objectives, consistently delivering secure, high-availability platforms while mitigating production risks.</p>
+    <p class="summary">Senior Software Engineer with 10+ years of experience building distributed systems, real-time data pipelines, and cloud-native infrastructure on AWS at enterprise scale. Contributed to a multi-region event-driven pipeline enabling real-time data streaming and a 22M record backfill between Salesforce and Tableau Cloud Manager &mdash; processing up to 150K events/min. Known for end-to-end ownership, CI/CD expertise, cross-functional technical leadership, and driving reliability improvements through automation and AI tooling.</p>
   </section>
 
-  <!-- Work Experience -->
-  <section class="section">
-    <div class="section-title">Work Experience</div>
-
-    <!-- SMTS -->
-    <div class="job">
-      <div class="job-top">
-        <span class="job-company">Salesforce &mdash; Tableau Software</span>
-        <span class="job-dates">Feb 2025 &ndash; Present &nbsp;|&nbsp; San Francisco, CA</span>
-      </div>
-      <div class="job-role">Software Engineer, SMTS</div>
-      <ul class="bullets">
-        <li>Led design and delivery of an event-driven, multi-region real-time pipeline replacing legacy batch sync with encrypted cross-account streaming.</li>
-        <li>Drove CI/CD re-architecture from manual AWS console edits to stage-gated pipelines; established deployment standards and mentored team as CI/CD SME.</li>
-        <li>Responsible for development and operation of a Tier 1 production service; designed monitoring, health checks, SLA validation, and led Sev-3 RCA.</li>
-        <li>Evangelized &amp; led migration to internal observability platform and adoption of AI-assisted development tools, delivering reusable prompt templates.</li>
-        <li>Led cross-team alignment to unblock a critical data dependency, driving scope and timelines to resolution.</li>
-      </ul>
-    </div>
-
-    <!-- MTS -->
-    <div class="job">
-      <div class="job-top">
-        <span class="job-company">Salesforce &mdash; Tableau Software</span>
-        <span class="job-dates">Apr 2021 &ndash; Feb 2025 &nbsp;|&nbsp; San Francisco, CA</span>
-      </div>
-      <div class="job-role">Software Engineer, MTS</div>
-      <ul class="bullets">
-        <li>Responsible for development and operation of four licensing platform services across the full deployment lifecycle, including next-gen cloud platform migration.</li>
-        <li>Evangelized &amp; led observability vendor migration, eliminating external costs; recognized with Spot Bonus (Q3 2023).</li>
-        <li>Drove reliability initiatives &mdash; continuous monitoring, health checks, and dashboards &mdash; supporting 99.95% uptime SLA targets.</li>
-        <li>Maintained security &amp; compliance by driving platform upgrades and standardizing operational playbooks ahead of deprecation deadlines.</li>
-      </ul>
-    </div>
-
-    <!-- Microsoft -->
-    <div class="job">
-      <div class="job-top">
-        <span class="job-company">Microsoft (via Insight Global)</span>
-        <span class="job-dates">Aug 2019 &ndash; Apr 2021 &nbsp;|&nbsp; Seattle, WA</span>
-      </div>
-      <div class="job-role">Software Engineer</div>
-      <ul class="bullets">
-        <li>Designed enterprise-level test infrastructure for the Microsoft Office team using Ruby and Chef to automate macOS machine provisioning across multiple Office for Mac teams.</li>
-        <li>Applied spec-driven design and Agile practices to validate new features and ensure cross-macOS-version supportability; contributed to open-source "macos-cookbook" on GitHub.</li>
-      </ul>
-    </div>
-
-    <!-- Tableau Support -->
-    <div class="job">
-      <div class="job-top">
-        <span class="job-company">Tableau Software</span>
-        <span class="job-dates">Jan 2015 &ndash; Aug 2019 &nbsp;|&nbsp; Seattle, WA</span>
-      </div>
-      <div class="job-role">Senior Technical Support Engineer</div>
-      <ul class="bullets">
-        <li>Diagnosed complex application and latency issues at customer scale; improved team case-closing metrics by authoring KB articles for undocumented issues.</li>
-        <li>Performed root-cause analyses using Tableau log files and troubleshooting tools, maintaining high customer satisfaction through clear communication and systematic follow-through.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Technical Skills -->
   <section class="section">
     <div class="section-title">Technical Skills</div>
     <table class="skills-table">
       <tr>
-        <td><span class="sk">Cloud:</span> AWS (Lambda, DynamoDB, SQS, SES, KMS, IAM, CloudWatch, ECR, Secrets Manager, ECS), Terraform, Kubernetes, Hyperforce</td>
-        <td><span class="sk">CI/CD &amp; DevOps:</span> GitLab CI/CD, Falcon CI/CD (FIT), Bamboo, Docker, multi-env pipelines, MESH/Ingress networking</td>
+        <td><span class="sk">Languages:</span> Python, Java, Ruby</td>
+        <td><span class="sk">Cloud &amp; Infrastructure:</span> AWS (Lambda, DynamoDB, SQS, IAM, CloudWatch, ECR, Secrets Manager, ECS), Terraform, Kubernetes, Docker</td>
       </tr>
       <tr>
-        <td><span class="sk">Observability:</span> Splunk, Prometheus, PagerDuty, Argus, New Relic, Grafana, Fluentbit, Kafka</td>
-        <td><span class="sk">Languages &amp; Frameworks:</span> Python, Java, SQL, Spring Boot, Maven, JUnit 5, Gradle</td>
+        <td><span class="sk">Frameworks:</span> Spring Boot, Apache Maven, Gradle, Chef, REST API Design &amp; Development</td>
+        <td><span class="sk">CI/CD:</span> GitLab CI/CD, stage-gated pipelines, multi-environment deployment management</td>
       </tr>
       <tr>
-        <td><span class="sk">Licensing:</span> Flexera/FlexNet, ECAP Licensing, Nexus &nbsp;|&nbsp; <span class="sk">AI Tools:</span> Cursor, Claude, Windsurf</td>
-        <td><span class="sk">Languages:</span> English (fluent), Cantonese (native), Mandarin (conversational)</td>
+        <td><span class="sk">Testing:</span> JUnit 5, Falcon FIT (integration testing), CUJ synthetic testing (Lambda-based continuous traffic)</td>
+        <td><span class="sk">Observability:</span> Grafana, CloudWatch, Splunk, Argus, New Relic &nbsp;|&nbsp; <span class="sk">AI Tools:</span> Cursor, Claude Code, Google Gemini</td>
       </tr>
     </table>
   </section>
 
-  <!-- Education -->
+  <section class="section">
+    <div class="section-title">Work Experience</div>
+
+    <div class="job">
+      <div class="job-top">
+        <span class="job-company">Salesforce</span>
+        <span class="job-dates">Feb 2025 &ndash; Present &nbsp;|&nbsp; Seattle, WA</span>
+      </div>
+      <div class="job-role">Software Engineer, SMTS</div>
+      <ul class="bullets">
+        <li>Contributed to the design and delivery of a multi-region, event-driven real-time sync pipeline &mdash; synchronizing 108K tenants, 110K sites, and 22M users between Salesforce and Tableau Cloud Manager at sub-2-minute latency, processing up to 150K events/min burst traffic, including a 22M record backfill at launch.</li>
+        <li>Spearheaded CI/CD re-architecture from manual deployments to stage-gated automated pipelines; served as primary code reviewer and production deployment owner, mentoring engineers across the team on best practices.</li>
+        <li>Adopted AI-assisted development practices using Cursor and Claude Code to accelerate Day 2 operations &mdash; including auto-generating runbooks and playbooks, reducing manual documentation overhead and improving incident response readiness.</li>
+        <li>Drove cross-functional alignment across multiple platform and infrastructure teams &mdash; securing encryption key access, implementing rate limiting to protect service stability, and resolving cloud deployment permissions &mdash; consistently recognized by teammates for unblocking critical delivery milestones.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <span class="job-company">Salesforce</span>
+        <span class="job-dates">Apr 2021 &ndash; Feb 2025 &nbsp;|&nbsp; Seattle, WA</span>
+      </div>
+      <div class="job-role">Software Engineer, MTS</div>
+      <ul class="bullets">
+        <li>Owned end-to-end development and operations of four product licensing microservices &mdash; including a Tier 1 Spring Boot REST API handling 300K+ daily license activation and renewal requests across desktop, server, and containerized deployments; identified and resolved a critical production bug through deep incident root cause analysis, driving error metrics to zero immediately post-deployment.</li>
+        <li>Designed and implemented a CUJ Lambda running continuous synthetic traffic against production ATR services &mdash; testing all critical licensing paths end-to-end, auto-releasing production licenses post-use, and integrating custom Grafana alerts and metrics; FIT integration tests authored as part of this initiative detected 4 P1 bugs in production, directly contributing to Tableau licensing service reliability improvement toward 99.9% availability.</li>
+        <li>Led observability vendor migration from New Relic to an internal platform, eliminating third-party costs and improving system visibility; sustained 99.95% uptime SLA for license activation services relied on by Tableau customers worldwide; recognized with a Spot Bonus (Q3 2023).</li>
+        <li>Enforced security and compliance standards by leading platform upgrades and standardizing operational runbooks ahead of deprecation deadlines, ensuring continuous health check coverage and audit readiness across all owned services.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <span class="job-company">Microsoft (via Insight Global)</span>
+        <span class="job-dates">Aug 2019 &ndash; Apr 2021 &nbsp;|&nbsp; Greater Seattle Area</span>
+      </div>
+      <div class="job-role">Software Engineer (Contract)</div>
+      <ul class="bullets">
+        <li>Designed and developed enterprise-level test infrastructure for automating provisioning of macOS machines, benefiting multiple Microsoft Office for Mac teams.</li>
+        <li>Applied spec-driven design and Agile practices to validate new features and ensure cross-macOS-version supportability; contributed to the open-source &ldquo;macos-cookbook&rdquo; on GitHub.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <span class="job-company">Tableau Software</span>
+        <span class="job-dates">Jan 2015 &ndash; Aug 2019 &nbsp;|&nbsp; Greater Seattle Area</span>
+      </div>
+      <div class="job-role">Senior Technical Support Engineer</div>
+      <ul class="bullets">
+        <li>Served as technical escalation point for enterprise Tableau Server customers &mdash; diagnosing complex root causes across networking, authentication, and performance layers, and partnering directly with engineering to reproduce, document, and resolve critical product defects, accelerating fix cycles for high-priority accounts.</li>
+        <li>Managed a portfolio of high-severity cases end-to-end across Tableau Desktop and Server on Windows and macOS &mdash; maintaining global SLA compliance and building deep architectural expertise that enabled faster resolution and internal knowledge sharing.</li>
+      </ul>
+    </div>
+  </section>
+
   <section class="section">
     <div class="section-title">Education</div>
 
     <div class="edu-entry">
       <div class="edu-top">
         <span class="edu-school">Seattle University</span>
-        <span class="edu-dates">Sep 2017 &ndash; Jun 2020</span>
+        <span class="edu-dates">Sep 2018 &ndash; Jun 2020</span>
       </div>
       <div class="edu-degree">M.S., Computer Science &nbsp;&mdash;&nbsp; GPA 3.7</div>
+    </div>
+
+    <div class="edu-entry">
+      <div class="edu-top">
+        <span class="edu-school">Seattle University</span>
+        <span class="edu-dates">Sep 2017 &ndash; Jun 2018</span>
+      </div>
       <div class="edu-degree">Graduate Certificate, Computer Science Fundamentals</div>
     </div>
 
