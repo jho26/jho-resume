@@ -138,13 +138,14 @@ const jobs: Job[] = [
   },
 ];
 
-const ExperienceCard: React.FC<{ job: Job; delay: string }> = ({ job, delay }) => {
+const ExperienceCard: React.FC<{ job: Job; index: number; delay: string }> = ({ job, index, delay }) => {
   const { ref, isVisible } = useScrollReveal(0.1);
+  const directionClass = index % 2 === 0 ? 'reveal-left' : 'reveal-right';
 
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={`experience-card reveal ${isVisible ? 'active' : ''}`}
+      className={`experience-card reveal ${directionClass} ${isVisible ? 'active' : ''}`}
       style={{ transitionDelay: delay }}
     >
       <ExperienceViz type={job.viz} />
@@ -180,7 +181,7 @@ const Experience: React.FC = () => {
         </div>
         <div className="experience-grid">
           {jobs.map((job, i) => (
-            <ExperienceCard key={job.company + job.role} job={job} delay={`${i * 0.1}s`} />
+            <ExperienceCard key={job.company + job.role} job={job} index={i} delay={`${i * 0.1}s`} />
           ))}
         </div>
       </div>

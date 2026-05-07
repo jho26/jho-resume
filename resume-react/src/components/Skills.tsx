@@ -40,13 +40,14 @@ const skillGroups: SkillGroup[] = [
   },
 ];
 
-const SkillGroupCard: React.FC<{ group: SkillGroup; delay: string }> = ({ group, delay }) => {
+const SkillGroupCard: React.FC<{ group: SkillGroup; index: number; delay: string }> = ({ group, index, delay }) => {
   const { ref, isVisible } = useScrollReveal(0.1);
+  const delayClass = `reveal-delay-${(index % 4) + 1}`;
 
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={`skill-group reveal ${isVisible ? 'active' : ''}`}
+      className={`skill-group reveal ${delayClass} ${isVisible ? 'active' : ''}`}
       style={{ transitionDelay: delay }}
     >
       <h3 className="skill-group-title">
@@ -80,7 +81,7 @@ const Skills: React.FC = () => {
         </div>
         <div className="skills-grid">
           {skillGroups.map((group, i) => (
-            <SkillGroupCard key={group.label} group={group} delay={`${i * 0.08}s`} />
+            <SkillGroupCard key={group.label} group={group} index={i} delay={`${i * 0.08}s`} />
           ))}
         </div>
       </div>

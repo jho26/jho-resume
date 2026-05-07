@@ -479,11 +479,13 @@ p {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: radial-gradient(circle at 38% 38%, #fffbe6 0%, #ffd93d 40%, #ffaa00 100%);
+    /* silvery crescent: bright face + inset shadow creates the dark side */
+    background: radial-gradient(circle at 42% 42%, #f4f0ff 0%, #d8ccff 45%, #b0a0e8 100%);
     box-shadow:
-        0 0 30px 12px rgba(255, 217, 61, 0.35),
-        0 0 80px 30px rgba(255, 170, 0, 0.18),
-        0 0 140px 60px rgba(255, 140, 0, 0.08);
+        inset -16px -6px 0 4px #0D0B2B,
+        0 0 28px 10px rgba(180, 160, 255, 0.38),
+        0 0 70px 28px rgba(155, 127, 247, 0.20),
+        0 0 130px 55px rgba(123, 92, 240, 0.10);
     pointer-events: none;
     z-index: 2;
     opacity: 0;
@@ -1435,15 +1437,139 @@ p {
    ========================================== */
 
 .contact-section {
-    background: var(--yellow-pale);
+    background: #050318;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Mesh SVG — fills the section behind content */
+.contact-mesh-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Three drift cycles for visual variety */
+@keyframes meshDrift0 {
+    0%,100% { transform: translateX(0)   translateY(0); }
+    50%      { transform: translateX(6px) translateY(4px); }
+}
+@keyframes meshDrift1 {
+    0%,100% { transform: translateX(0)    translateY(0); }
+    50%      { transform: translateX(-8px) translateY(6px); }
+}
+@keyframes meshDrift2 {
+    0%,100% { transform: translateX(0)   translateY(0); }
+    50%      { transform: translateX(5px) translateY(-5px); }
+}
+
+.mesh-anim-0 { animation: meshDrift0 14s ease-in-out infinite; }
+.mesh-anim-1 { animation: meshDrift1 18s ease-in-out infinite 2s; }
+.mesh-anim-2 { animation: meshDrift2 22s ease-in-out infinite 5s; }
+
+/* Radial vignette so mesh fades toward edges */
+.contact-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, #050318 88%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Content sits above mesh + vignette */
+.contact-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* In dark mode the section uses pure deep navy */
+[data-theme="dark"] .contact-section {
+    background: #03020f;
+}
+[data-theme="dark"] .contact-section::before {
+    background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, #03020f 88%);
+}
+
+/* Light mode: pale background, dark lines */
+[data-theme="light"] .contact-section {
+    background: #F5F3FC;
+}
+[data-theme="light"] .contact-section::before {
+    background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, #F5F3FC 88%);
+}
+[data-theme="light"] .contact-mesh-bg {
+    mix-blend-mode: multiply;
+    filter: saturate(2.5) brightness(0.18);
+}
+[data-theme="light"] .contact-section .section-label {
+    color: var(--purple);
+}
+[data-theme="light"] .contact-section .section-label::before {
+    background: var(--purple);
+}
+[data-theme="light"] .contact-section .section-title {
+    color: var(--ink);
+}
+[data-theme="light"] .contact-section .section-subtitle {
+    color: var(--ink-60);
+}
+[data-theme="light"] .contact-card {
+    background: rgba(255, 255, 255, 0.82);
+    border-color: rgba(123, 92, 240, 0.18);
+    box-shadow: 0 8px 40px rgba(123, 92, 240, 0.12);
+}
+[data-theme="light"] .contact-card::before {
+    background: linear-gradient(90deg, transparent, rgba(123,92,240,0.5), rgba(0,201,184,0.5), transparent);
+}
+[data-theme="light"] .contact-value {
+    color: var(--ink);
+}
+[data-theme="light"] .contact-label {
+    color: var(--ink-40);
+}
+[data-theme="light"] .contact-link {
+    color: var(--purple);
+}
+[data-theme="light"] .contact-link:hover {
+    color: #6040D0;
+}
+[data-theme="light"] .contact-footer {
+    border-top-color: rgba(13, 11, 43, 0.10);
+}
+[data-theme="light"] .contact-footer p {
+    color: var(--ink-40);
+}
+[data-theme="light"] .contact-icon-wrap {
+    background: rgba(123, 92, 240, 0.08);
+    border-color: rgba(123, 92, 240, 0.20);
+}
+
+/* Text overrides so section label / title always read on the dark bg */
+.contact-section .section-label {
+    color: var(--purple-light);
+}
+.contact-section .section-label::before {
+    background: var(--purple-light);
+}
+.contact-section .section-title {
+    color: var(--white);
+}
+.contact-section .section-subtitle {
+    color: rgba(255, 255, 255, 0.55);
 }
 
 .contact-card {
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     border-radius: var(--radius-xl);
     padding: 3rem;
-    border: 1px solid rgba(255, 217, 61, 0.30);
-    box-shadow: var(--shadow-yellow);
+    border: 1px solid rgba(123, 92, 240, 0.25);
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255,255,255,0.04);
     max-width: 580px;
     margin: 0 auto;
     position: relative;
@@ -1454,8 +1580,8 @@ p {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--purple);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,212,200,0.7), rgba(155,127,247,0.7), transparent);
 }
 
 .contact-items {
@@ -1498,41 +1624,54 @@ p {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--ink-40);
+    color: rgba(255, 255, 255, 0.38);
     margin-bottom: 0.15rem;
 }
 
 .contact-value {
     font-family: var(--font-main);
     font-size: 0.975rem;
-    color: var(--ink);
+    color: rgba(255, 255, 255, 0.88);
     font-weight: 500;
 }
 
 .contact-link {
-    color: var(--purple);
+    color: rgba(155, 127, 247, 0.95);
     transition: var(--transition-fast);
 }
 
 .contact-link:hover {
-    color: #6040D0;
+    color: var(--teal);
     text-decoration: underline;
 }
 
 .contact-footer {
     margin-top: 1.75rem;
     padding-top: 1.75rem;
-    border-top: 1px solid rgba(255, 217, 61, 0.35);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     text-align: center;
 }
 
 .contact-footer p {
     font-family: var(--font-main);
     font-size: 0.72rem;
-    color: var(--ink-40);
+    color: rgba(255, 255, 255, 0.35);
     margin: 0;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+}
+
+.contact-icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: rgba(123, 92, 240, 0.18);
+    border: 1px solid rgba(123, 92, 240, 0.30);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
 }
 
 /* ==========================================
@@ -1666,4 +1805,462 @@ p {
     .container { padding: 0 var(--spacing-sm); }
     .experience-card { padding: 1.25rem; }
     .hero-stats { display: none; }
+}
+
+/* ==========================================
+   Scroll Reveal — Horizontal Variants
+   ========================================== */
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+}
+
+.reveal-left.active,
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered delay helpers */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ==========================================
+   Theme Toggle Button
+   ========================================== */
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 950;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 9999px;
+    padding: 8px 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    line-height: 1;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* ==========================================
+   Dark Mode (default) — content sections
+   ========================================== */
+
+[data-theme="dark"] body {
+    background: var(--navy);
+    color: var(--text-on-dark);
+}
+
+[data-theme="dark"] .summary-section,
+[data-theme="dark"] .experience-section,
+[data-theme="dark"] .education-section,
+[data-theme="dark"] .contact-section {
+    background: #100e30;
+}
+
+[data-theme="dark"] .skills-section {
+    background: #0e0c28;
+}
+
+[data-theme="dark"] .section-label {
+    color: var(--purple-light);
+}
+
+[data-theme="dark"] .section-label::before {
+    background: var(--purple-light);
+}
+
+[data-theme="dark"] .section-title {
+    color: var(--white);
+}
+
+[data-theme="dark"] .section-subtitle {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+[data-theme="dark"] .section-divider {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* Summary */
+[data-theme="dark"] .summary-body {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/* Experience cards */
+[data-theme="dark"] .experience-card {
+    background: #1a1650;
+    border-color: rgba(123, 92, 240, 0.20);
+    border-left-color: var(--purple);
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .experience-card:hover {
+    background: #1e1a5a;
+    box-shadow: 0 14px 48px rgba(0, 0, 0, 0.5);
+    border-color: rgba(123, 92, 240, 0.35);
+    border-left-color: var(--purple);
+}
+
+[data-theme="dark"] .experience-role {
+    color: var(--white);
+}
+
+[data-theme="dark"] .experience-dates {
+    color: rgba(255, 255, 255, 0.38);
+}
+
+[data-theme="dark"] .experience-bullets li {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+/* Skill groups */
+[data-theme="dark"] .skill-group {
+    background: #1a1650;
+    border-color: rgba(123, 92, 240, 0.18);
+    border-top-color: var(--purple);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.30);
+}
+
+[data-theme="dark"] .skill-group:hover {
+    background: #1e1a5a;
+    box-shadow: 0 8px 36px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .skill-tag {
+    background: rgba(123, 92, 240, 0.15);
+    border-color: rgba(123, 92, 240, 0.30);
+    color: var(--purple-light);
+}
+
+[data-theme="dark"] .skill-tag:hover {
+    background: var(--purple);
+    color: var(--white);
+    border-color: var(--purple);
+}
+
+/* Education cards */
+[data-theme="dark"] .education-card {
+    background: #1a1650;
+    border-color: rgba(0, 201, 184, 0.15);
+    border-top-color: var(--teal);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.30);
+}
+
+[data-theme="dark"] .education-card:hover {
+    background: #1e1a5a;
+    box-shadow: 0 14px 48px rgba(0, 201, 184, 0.18);
+}
+
+[data-theme="dark"] .education-school {
+    color: var(--white);
+}
+
+[data-theme="dark"] .education-degree {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+[data-theme="dark"] .education-dates {
+    color: rgba(255, 255, 255, 0.38);
+}
+
+[data-theme="dark"] .education-details li {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* Metro track */
+[data-theme="dark"] .page-stop-label {
+    background: #1a1650;
+    border-color: rgba(123, 92, 240, 0.30);
+}
+
+[data-theme="dark"] .page-stop-name {
+    color: var(--white);
+}
+
+[data-theme="dark"] .page-stop-subtitle {
+    color: rgba(255, 255, 255, 0.40);
+}
+
+/* ==========================================
+   Light Mode Theme
+   ========================================== */
+
+[data-theme="light"] .theme-toggle {
+    background: rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] {
+    --navy: #F0EEF8;
+    --navy-mid: #E8E3F5;
+    --navy-card: #FFFFFF;
+    --ink: #0D0B2B;
+    --yellow: #E6A800;
+}
+
+[data-theme="light"] body {
+    background: #F5F3FC;
+    color: var(--ink);
+}
+
+/* Hero — light mode */
+[data-theme="light"] .hero {
+    background: linear-gradient(
+        180deg,
+        #B8D4F8 0%,
+        #D4E8FF 30%,
+        #E8F2FF 60%,
+        #F0EEF8 100%
+    );
+}
+
+[data-theme="light"] .hero::before {
+    opacity: 0;
+}
+
+[data-theme="light"] .hero-title {
+    color: #1a0a3d;
+    text-shadow: 0 2px 20px rgba(100, 80, 200, 0.15);
+}
+
+[data-theme="light"] .hero-title-accent {
+    color: #7B3F00;
+    text-shadow: 0 2px 16px rgba(123, 63, 0, 0.20);
+}
+
+[data-theme="light"] .hero-eyebrow {
+    color: rgba(13, 11, 43, 0.7);
+}
+
+[data-theme="light"] .hero-eyebrow::before,
+[data-theme="light"] .hero-eyebrow::after {
+    background: rgba(13, 11, 43, 0.4);
+}
+
+[data-theme="light"] .hero-location {
+    color: rgba(13, 11, 43, 0.7);
+}
+
+[data-theme="light"] .hero-subtitle {
+    color: rgba(13, 11, 43, 0.75);
+}
+
+[data-theme="light"] .hero-summary {
+    color: rgba(13, 11, 43, 0.72);
+}
+
+[data-theme="light"] .hero-moon {
+    background: radial-gradient(circle at 38% 38%, #fffde0 0%, #FFD93D 45%, #FFA500 100%);
+    /* remove the crescent inset shadow — it's a full sun */
+    box-shadow:
+        inset 0 0 0 0 transparent,
+        0 0 40px 18px rgba(255, 210, 0, 0.60),
+        0 0 90px 40px rgba(255, 170, 0, 0.35),
+        0 0 160px 70px rgba(255, 130, 0, 0.18);
+}
+
+[data-theme="light"] .hero-cloud {
+    fill: rgba(255, 255, 255, 0.65);
+    stroke: rgba(100, 150, 220, 0.3);
+}
+
+[data-theme="light"] .hero-radial-burst {
+    filter: hue-rotate(180deg) saturate(0.4) brightness(1.2);
+    opacity: 0.5;
+}
+
+[data-theme="light"] .resume-hero-background::before {
+    background: radial-gradient(circle, rgba(100, 150, 240, 0.20) 0%, transparent 65%);
+}
+
+[data-theme="light"] .resume-hero-background::after {
+    background: radial-gradient(circle, rgba(0, 180, 220, 0.15) 0%, transparent 65%);
+}
+
+[data-theme="light"] .hero-blob-yellow {
+    background: #FFE082;
+    opacity: 0.35;
+}
+
+[data-theme="light"] .hero-blob-pink {
+    background: #F8BBD9;
+    opacity: 0.30;
+}
+
+[data-theme="light"] .scroll-indicator span {
+    color: rgba(13, 11, 43, 0.45);
+}
+
+[data-theme="light"] .cta-button-secondary {
+    color: #1a0a3d;
+    border-color: rgba(13, 11, 43, 0.30);
+}
+
+[data-theme="light"] .cta-button-secondary:hover {
+    border-color: var(--purple);
+    color: var(--purple);
+    background: rgba(123, 92, 240, 0.08);
+}
+
+/* Light mode section backgrounds */
+[data-theme="light"] .summary-section,
+[data-theme="light"] .experience-section,
+[data-theme="light"] .education-section {
+    background: #FFFFFF;
+}
+
+[data-theme="light"] .skills-section {
+    background: var(--yellow-cream);
+}
+
+/* Light mode section text */
+[data-theme="light"] .section-label {
+    color: var(--purple);
+}
+
+[data-theme="light"] .section-label::before {
+    background: var(--purple);
+}
+
+[data-theme="light"] .section-title {
+    color: var(--ink);
+}
+
+[data-theme="light"] .section-subtitle {
+    color: var(--ink-60);
+}
+
+[data-theme="light"] .section-divider {
+    background: rgba(13, 11, 43, 0.08);
+}
+
+/* Light mode summary */
+[data-theme="light"] .summary-body {
+    color: var(--ink-80);
+}
+
+/* Light mode experience */
+[data-theme="light"] .experience-card {
+    background: var(--white);
+    border-color: var(--ink-10);
+    border-left-color: var(--purple);
+    box-shadow: var(--shadow-md);
+}
+
+[data-theme="light"] .experience-card:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+[data-theme="light"] .experience-role {
+    color: var(--ink);
+}
+
+[data-theme="light"] .experience-dates {
+    color: var(--ink-40);
+}
+
+[data-theme="light"] .experience-bullets li {
+    color: var(--ink-80);
+}
+
+/* Light mode skills */
+[data-theme="light"] .skill-group {
+    background: var(--white);
+    border-color: rgba(123, 92, 240, 0.10);
+    border-top-color: var(--purple);
+    box-shadow: var(--shadow-sm);
+}
+
+[data-theme="light"] .skill-tag {
+    background: rgba(123, 92, 240, 0.07);
+    border-color: rgba(123, 92, 240, 0.18);
+    color: var(--purple);
+}
+
+[data-theme="light"] .skill-tag:hover {
+    background: var(--purple);
+    color: var(--white);
+}
+
+/* Light mode education */
+[data-theme="light"] .education-card {
+    background: var(--white);
+    border-color: var(--ink-10);
+    border-top-color: var(--teal);
+    box-shadow: var(--shadow-teal);
+}
+
+[data-theme="light"] .education-school {
+    color: var(--ink);
+}
+
+[data-theme="light"] .education-degree {
+    color: var(--ink-80);
+}
+
+[data-theme="light"] .education-dates {
+    color: var(--ink-40);
+}
+
+[data-theme="light"] .education-details li {
+    color: var(--ink-60);
+}
+
+
+/* claude-section stays dark in both modes */
+[data-theme="light"] .claude-section {
+    background: #1a0a3d;
+}
+
+/* Light mode metro track */
+[data-theme="light"] .page-track-line {
+    background: rgba(123, 92, 240, 0.30);
+}
+
+[data-theme="light"] .page-stop-node {
+    background: var(--white);
+    border-color: rgba(123, 92, 240, 0.50);
+}
+
+[data-theme="light"] .page-stop-label {
+    background: var(--white);
+    border-color: rgba(123, 92, 240, 0.20);
+}
+
+[data-theme="light"] .page-stop-name {
+    color: var(--ink);
+}
+
+/* Light mode bottom nav */
+[data-theme="light"] .bottom-nav {
+    background: rgba(240, 238, 248, 0.97);
+    border-top: 1px solid rgba(123, 92, 240, 0.20);
+}
+
+[data-theme="light"] .bottom-nav-tab {
+    color: rgba(13, 11, 43, 0.4);
+}
+
+[data-theme="light"] .bottom-nav-tab.active {
+    color: var(--purple);
 }
